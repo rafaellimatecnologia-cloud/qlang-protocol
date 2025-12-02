@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package qlang.v1;
+
+option go_package = "github.com/qlang-ai/qlang-protocol/gen/go/qlang/v1";
+option java_package = "ai.qlang.v1";
+option java_outer_classname = "QLangProto";
+option py_generic_services = true;
+
+// QLangInstruction represents a single Q-Lang instruction
+message QLangInstruction {
+  // Unique command identifier (0x01 - 0xFF)
+  uint32 command_id = 1;
+  
+  // Context flag: determines how the instruction is executed
+  // 0 = Context A (Low Resource), 1 = Context B (High Resource)
+  uint32 context_flag = 2;
+  
+  // Variable-length data payload
+  bytes data_payload = 3;
+  
+  // Optional metadata
+  QLangMetadata metadata = 4;
+}
+
+// QLangMetadata contains optional metadata about the instruction
+message QLangMetadata {
+  // Timestamp of instruction creation (Unix timestamp in milliseconds)
+  int64 timestamp_ms = 1;
+  
+  // Device identifier (e.g., device UUID)
+  string device_id = 2;
+  
+  // Priority level (0-255, higher = more important)
+  uint32 priority = 3;
+  
+  // Request ID for tracking
+  string request_id = 4;
+}
+
+// QLangResponse represents the response to a Q-Lang instruction
+message QLangResponse {
+  // Status code (0 = success, non-zero = error)
+  uint32 status_code = 1;
+  
+  // Operation name that was executed
+  string operation_name = 2;
+  
+  // Operation ID
+  uint32 operation_id = 3;
+  
+  // Response data
+  bytes response_data = 4;
+  
+  // Execution time in microseconds
+  uint64 execution_time_us = 5;
+}
+
+// QLangBatch represents a batch of instructions for efficient transmission
+message QLangBatch {
+  // Batch ID for tracking
+  string batch_id = 1;
+  
+  // List of instructions
+  repeated QLangInstruction instructions = 2;
+  
+  // Batch metadata
+  QLangMetadata metadata = 3;
+}
+
+// QLangBatchResponse represents responses to a batch of instructions
+message QLangBatchResponse {
+  // Batch ID (matches the request)
+  string batch_id = 1;
+  
+  // List of responses
+  repeated QLangResponse responses = 2;
+  
+  // Total execution time in milliseconds
+  uint64 total_execution_time_ms = 3;
+}

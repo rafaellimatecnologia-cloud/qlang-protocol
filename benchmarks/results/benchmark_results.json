@@ -1,0 +1,26 @@
+[
+  {
+    "protocol": "Q-Lang",
+    "message_size": 39,
+    "serialization_time_us": 0.5101318299421109,
+    "deserialization_time_us": 0.538337180041708,
+    "throughput_msg_sec": 1477521.0,
+    "memory_usage_mb": 0.0
+  },
+  {
+    "protocol": "JSON",
+    "message_size": 85,
+    "serialization_time_us": 3.0034198600333184,
+    "deserialization_time_us": 2.4759151600301266,
+    "throughput_msg_sec": 308534.0,
+    "memory_usage_mb": 0.0
+  },
+  {
+    "protocol": "CBOR",
+    "message_size": 71,
+    "serialization_time_us": 5.609219259931706,
+    "deserialization_time_us": 1.9864513500942849,
+    "throughput_msg_sec": 174631.0,
+    "memory_usage_mb": 0.0
+  }
+]

@@ -121,4 +121,4 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 ## Contact
 
-For questions or inquiries, please reach out to the Q-Lang team at team@qlang.ai.
+For questions or inquiries, please reach out to the Q-Lang team at rafaellimatecnologia@gmail.com
